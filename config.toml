@@ -1,0 +1,69 @@
+# NEAT Algorithm Configuration
+[neat]
+population_size = 150                # Number of genomes in population
+fitness_threshold = 500.0            # Simulation will end if this fitness is reached
+max_generations = 100                # Maximum number of generations to run
+no_fitness_termination = false       # Don't terminate if fitness threshold is reached
+
+# Species parameters
+species_threshold = 3.0              # Compatibility threshold for speciation
+compatibility_disjoint_coefficient = 1.0
+compatibility_weight_coefficient = 0.5
+species_elitism = 2                  # Number of species to protect from extinction
+
+# Reproduction parameters
+elitism = 2                          # Number of top genomes to carry over unchanged
+survival_threshold = 0.2             # Only the top percentage in each species reproduce
+min_species_size = 2                 # Minimum number of genomes per species
+
+# Mutation parameters
+weight_mutation_rate = 0.8           # Probability of mutating connection weights
+weight_mutation_power = 0.5          # Maximum amount to mutate weights
+connection_mutation_rate = 0.1       # Probability of adding a new connection
+node_mutation_rate = 0.03            # Probability of adding a new node
+bias_mutation_rate = 0.7             # Probability of mutating bias values
+disable_mutation_rate = 0.1          # Probability of disabling a connection
+enable_mutation_rate = 0.2           # Probability of re-enabling a connection
+
+# Network parameters
+num_inputs = 8                       # Cart position, cart velocity, sin/cos(θ1), sin/cos(θ2), ω1, ω2
+num_outputs = 1                      # Force applied to cart (continuous value)
+num_hidden = 0                       # Start with no hidden nodes
+activation_function = "tanh"         # Options: sigmoid, tanh, relu
+initial_weight_stdev = 0.1           # Standard deviation for initial weight values
+
+# Double Pendulum Physics
+[physics]
+gravity = 9.81                       # Gravitational acceleration (m/s^2)
+timestep = 0.01                      # Physics simulation timestep (s)
+cart_mass = 1.0                      # Mass of the cart (kg)
+pendulum1_mass = 0.5                 # Mass of first pendulum (kg)
+pendulum1_length = 1.0               # Length of first pendulum (m)
+pendulum2_mass = 0.5                 # Mass of second pendulum (kg) 
+pendulum2_length = 1.0               # Length of second pendulum (m)
+max_force = 10.0                     # Maximum force that can be applied to cart (N)
+friction = 0.1                       # Friction coefficient
+track_limit = 5.0                    # Maximum distance cart can move from center (m)
+
+# Simulation parameters
+[simulation]
+steps = 1000                         # Maximum number of steps per simulation
+target_score = 500                   # Score that represents a successful balance
+
+# Visualization
+[visualization]
+width = 1280                         # Rendering width
+height = 720                         # Rendering height
+fps = 60                             # Frames per second for visualization
+trail_length = 100                   # Length of motion trails
+trail_opacity_min = 0.05             # Minimum opacity for trail end
+trail_opacity_max = 0.9              # Maximum opacity for trail start
+background_color = [10, 15, 20]      # Dark blue background
+pendulum_color = [255, 165, 0]       # Orange pendulum
+cart_color = [0, 191, 255]           # Deep sky blue cart
+trail_color = [255, 69, 0]           # Red-orange trails
+grid_color = [50, 50, 50]            # Dark gray grid
+text_color = [255, 255, 255]         # White text
+best_networks_to_save = 5            # Number of best networks to save and visualize
+render_every = 10                    # Render every N generations
+video_filename = "pendulum_evolution.mp4" # Filename for the final video
